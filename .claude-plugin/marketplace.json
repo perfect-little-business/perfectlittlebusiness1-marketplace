@@ -1,12 +1,12 @@
 {
-  "name": "plb",
+  "name": "plb1",
   "displayName": "Perfect Little Business",
   "owner": {
     "name": "Cindy Molchany",
     "email": "hello@perfectlittlebusiness.com",
     "url": "https://perfectlittlebusiness.com"
   },
-  "description": "The Perfect Little Business plugin marketplace. The AI Operating Layer™ installed in Claude and Claude Code. Methodology, infrastructure, and automations for entrepreneurs who are subject matter experts.",
+  "description": "The Perfect Little Business plugin marketplace. The AI Operating Layer\u2122 installed in Claude and Claude Code. Methodology, infrastructure, and automations for entrepreneurs who are subject matter experts.",
   "plugins": [
     {
       "name": "perfectlittlebusiness",
