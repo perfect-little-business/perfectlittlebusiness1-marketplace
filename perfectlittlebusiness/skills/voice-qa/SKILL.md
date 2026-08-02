@@ -47,7 +47,13 @@ pricing or trademark policy live in your voice file, never in this skill.
 1. Read your brand voice rules from `BRAIN_PATH` (role: `*voice*`).
 2. Run the deterministic universal scan:
    `python3 scripts/voice_check.py <draft_file>`
-   (catches em/en-dashes, universal filler/amplifiers, and AI-slop constructions).
+   (catches em/en-dashes, longhand where a voice would contract, the X-not-Y
+   contrast flip, universal filler/amplifiers, and AI-slop constructions).
+
+   `--surface` is optional. The default treats the draft as brand-voiced prose,
+   which is what this skill is for. Pass `--surface reference` (or `spec`,
+   `internal`, `technical`) for a spec or reference doc, where formal prose is
+   correct and the longhand FAIL and contraction floor would be noise.
 3. Apply your brand's OWN rules from the voice file: any banned terms, retired
    phrases, required or approved terminology, audience/descriptor preferences,
    and pricing or trademark policy your brand specifies. These are brand-specific,
@@ -65,16 +71,21 @@ draft's own prose, not the quotations.
 
 ---
 
-## FAIL vs FLAG
+## FAIL vs FLAG vs WARN
 
 - **FAIL (must fix before ship):** an em-dash or en-dash anywhere (the strongest
-  "written by AI" tell), plus anything your brand voice rules mark as a hard
+  "written by AI" tell); **longhand where a conversational voice would
+  contract** (`It is`, `That is`, `You are`, `There is`, `Do not`, `Does not`,
+  `Cannot`, `Is not`); plus anything your brand voice rules mark as a hard
   violation.
-- **FLAG (revise unless deliberate):** the universal filler/amplifiers and
-  AI-slop constructions below, zombie nouns, and your brand's soft rules.
+- **FLAG (revise unless deliberate):** the X-not-Y contrast flip in any form,
+  the universal filler/amplifiers and AI-slop constructions below, zombie nouns,
+  and your brand's soft rules.
+- **WARN (a tic, not a violation - judgment call):** contrast-flip density above
+  ~2 per 1,000 words; contraction density below ~15 per 1,000 words.
 
-A draft **passes** only with zero FAILs. FLAGs are reported with a count and
-locations; you decide which are deliberate.
+A draft **passes** only with zero FAILs. FLAGs and WARNs are reported with
+counts and locations; you decide which are deliberate.
 
 ---
 
@@ -88,13 +99,26 @@ file can override any of them. The deterministic script in
 Hyphens in compound words are fine. Use a colon in headings and labels
 (`Section 1: Title`, not a dash).
 
-**Banned constructions (FLAG):** "It's not X. It's Y" and variants · "Here's the
-thing" / "Here's what most people miss" · "The truth is" / "What if I told you" ·
-"Imagine this" / "Picture this / yourself" · "In a world where" · "Let me
-explain" / "Let's break this down" · "Whether you're X or Y" · "More than just X"
-/ "Not your average X" · "Look," / "Listen," openers · "Trust me when I say" /
-"Let's be honest" · "That's where X comes in" · a rhetorical question answered
-immediately · repeated tricolons.
+**Contrast flip (FLAG), in every form:** "It's not X. It's Y" · "It is not X. It
+is Y" · "This isn't X, this is Y" · "X is not A, it is B" (noun subject) · "not a
+X but a Y" · "not just X but Y". This is matched as a *pattern*, not as a list of
+example spellings. See "Why the contrast flip is matched as a pattern" below.
+
+**Other banned constructions (FLAG):** "Here's the thing" / "Here's what most
+people miss" · "The truth is" / "What if I told you" · "Imagine this" / "Picture
+this / yourself" · "In a world where" · "Let me explain" / "Let's break this
+down" · "Whether you're X or Y" · "More than just X" / "Not your average X" ·
+"Look," / "Listen," openers · "Trust me when I say" / "Let's be honest" ·
+"That's where X comes in" · a rhetorical question answered immediately ·
+repeated tricolons.
+
+**Contractions (FAIL on longhand / WARN on density):** a conversational voice
+contracts. Write "it's," "that's," "you're," "there's," "don't," "doesn't,"
+"can't," "isn't." Longhand pairs FAIL; a contraction rate under ~15 per 1,000
+words WARNs, because zero-contraction prose is itself an AI tell.
+
+**Density (WARN):** a trailing "X, not Y" or "rather than" flip is fine once.
+Several in one document reads as a tic. WARN above ~2 per 1,000 words.
 
 **Filler / AI amplifiers (FLAG):** empty intensifiers and hype clichés -
 leverage (v), navigate (v), robust, seamless, elevate, unleash, unlock,
@@ -112,6 +136,41 @@ announce it.
 
 ---
 
+## Why the contrast flip is matched as a pattern *(2026-08-02, after a live miss)*
+
+A real document shipped with **"It is not a separate product and there is no
+separate invoice for it. It is the reason the rest of the build is worth
+doing."** The scan returned clean and a human caught it by eye.
+
+The cause: the check grepped for the *contracted examples* of the X-not-Y flip
+(`it's not X, it's Y`) instead of the *shape* those examples illustrate. The
+same construction written longhand matched nothing. **A rule names a pattern;
+its examples only illustrate it.** Three checks came out of that:
+
+1. **Contrast flip, matched as a pattern.** Longhand, contracted, and
+   negative-contraction forms, plus noun subjects and "not a X but a Y".
+2. **Flip density.** One is fine; several in a document is a tic, and it is what
+   made the original read as AI-written.
+3. **Contraction density.** Dodging check 1 by writing longhand produces
+   zero-contraction prose, which is its own AI tell. Longhand pairs FAIL; a low
+   contraction rate WARNs.
+
+**Two things to know before trusting the longhand FAIL:**
+
+- It is **the strictest check here.** If the friction gets annoying on a
+  deliberate, weighty `is not`, demote `is not` from the `NEGATOR` set in
+  `scripts/voice_check.py` to a FLAG. The rest of the check is unaffected.
+- Contractibility is grammatical, not textual. `"month one of it is training"`
+  and `"guess where you are."` cannot contract. The check only fires when the
+  pronoun heads its own clause and the copula is not clause-final. Both are real
+  false positives that a naive bigram match produced, which is why the
+  `_is_clause_start` / `_longhand_hits` guard exists. Do not simplify it.
+
+Verbatim quotes on blockquoted (`>`) lines and fenced code blocks are exempt
+from the longhand FAIL.
+
+---
+
 ## Report format
 
 ```
@@ -124,6 +183,13 @@ MUST FIX (FAIL)
 
 REVISE (FLAG) - N total
 - [line ~N] [rule] "...text..."  → suggested direction
+
+WARN - N total
+- [line ~N or document] [rule]  → why it reads as a tic
+
+DENSITY
+- contrast flips: N (N.N per 1k, warn >2.0)
+- contractions:   N (N.N per 1k, warn <15.0)
 
 NOTES
 - Brand voice file: [loaded / not found]
