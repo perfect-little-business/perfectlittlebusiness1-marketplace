@@ -2,7 +2,7 @@
 
 The Perfect Little Business plugin is the infrastructure layer of your AI Operating System, installed in Claude (Cowork) and Claude Code.
 
-Install it once. You get your AIOS Brain (the `brain/` folder and five foundational tools), twenty working skills, the voice-qa gate, three protective hooks, your Cowork OS dashboard, and the self-improvement loop that makes every session smarter than the last.
+Install it once. You get your AIOS Brain (the `brain/` folder and five foundational tools), twenty-one working skills, the voice-qa gate, three protective hooks, your Cowork OS dashboard, and the self-improvement loop that makes every session smarter than the last.
 
 This is the operating system. Your AIOS Brain populates inside it.
 
@@ -35,7 +35,8 @@ Run these to build the second brain your whole system reads from. Each runs live
 - `/ask`: Ask Claude a question grounded in your full AIOS Brain.
 
 **Thought leadership:**
-- `/gravity-dossier`: Interview yourself, or bring notes or a transcript, on one topic and get back a voice-preserved Thought Leadership Dossier: the source-of-truth document your content gets built from.
+- `/gravity-dossier`: Interview yourself, or bring notes or a transcript, on one topic and get back a voice-preserved, three-layer Thought Leadership Dossier: the source-of-truth document your content gets built from.
+- `/dossier-qa`: The cross-dossier consistency gate. Checks a dossier against your other dossiers and your Source of Truth for term conflicts, fact contradictions, topic overlap, and stale predictions. The Dossier runs it automatically; you can also run it on your whole dossiers folder as a periodic audit.
 
 **Getting unstuck:**
 - `/how-to`: Name a goal you want to reach with Claude and get walked there one beginner-proof step at a time, until you have built it yourself.

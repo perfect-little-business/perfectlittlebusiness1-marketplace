@@ -26,7 +26,7 @@ Detect the user's connected MCP servers if you can; otherwise ask which of these
 ### 3. Personalize the "Skills & agents" view as TWO sections
 Replace the `SKILLS` data with two clearly-labelled groups:
 
-- **Your installed skills** — the plugin's operating skills and AIOS Brain tools: `/start`, `/end`, `/hygiene`, `/learn`, `/decide`, `/recap`, `/digest`, `/ask`, `/how-to`, `/granola-pull`, `/draft-social`, `/voice-qa`, `/avatar-profile`, `/offer-architect`, `/conviction-map`, `/brand-style-guide`, `/source-of-truth`, `/gravity-dossier`, `/setup`. Use each skill's real one-line description.
+- **Your installed skills** — the plugin's operating skills and AIOS Brain tools: `/start`, `/end`, `/hygiene`, `/learn`, `/decide`, `/recap`, `/digest`, `/ask`, `/how-to`, `/granola-pull`, `/draft-social`, `/voice-qa`, `/avatar-profile`, `/offer-architect`, `/conviction-map`, `/brand-style-guide`, `/source-of-truth`, `/gravity-dossier`, `/dossier-qa`, `/setup`. Use each skill's real one-line description.
 - **Your custom agents** — the user's own workflow agents. Scan their installed skills for anything beyond the plugin's set and list those. If they have none yet, show a single neutral line: "Your custom agents will appear here as you build them."
 
 Render these as two sections (a heading per group), not one flat list.

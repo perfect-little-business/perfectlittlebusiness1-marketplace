@@ -110,6 +110,9 @@ When drafting, ALWAYS:
 - Stay grounded in their actual conviction, not abstract trend-talk
 - Avoid the phrases the forbidden-language-guard hook blocks (hustle, crush it, guru, level up, passive income, game-changer, "let's dive in", "unlock the power of", etc.) — if you draft these, the hook will block the write anyway
 
+- Rewrite zombie nouns: when a noun ending in -tion, -ment, -ity, -ance, -ence, -ness, or -ization hides a shorter verb, rewrite around the verb with a human subject ("we stay in communication" becomes "we keep talking"). Nouns that name a product, deliverable, or coined term are exempt — the rule targets buried actions, not named things.
+- Cold-audience openers blame the external system, never the reader's state: name what changed or failed around them, then point up to their ambition. Never open by naming what the reader might fear becoming, even to negate it — reassurance forces the rescue frame, and readers want a guide, not a rescue.
+
 Three voice versions should differ by:
 - Opening hook structure (observation / contrast / question / story)
 - Sentence rhythm (short staccato / longer flowing / mixed)

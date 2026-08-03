@@ -104,7 +104,7 @@ Output exactly this message:
 - Your AIOS Brain: the brain/ folder, eleven files ready to grow with you
 - Operating skills: /start, /end, /hygiene, /learn, /decide, /recap, /digest, /ask, /granola-pull, /draft-social, /how-to
 - Your five AIOS Brain tools: /avatar-profile, /offer-architect, /conviction-map, /brand-style-guide, /source-of-truth
-- Plus /voice-qa (brand-voice gate) and /gravity-dossier
+- Plus /voice-qa (brand-voice gate), /gravity-dossier, and /dossier-qa (dossier consistency gate)
 - Three protective hooks: credential guard, forbidden-language guard, session-end nudge
 
 **Your test-drive automations are live immediately:**
@@ -129,7 +129,7 @@ Use this template. Replace [BRACKETED] with user answers. Replace [TODAY'S_DATE]
 **Project:** [PROJECT_NAME]
 **Role:** [USER_ROLE]
 **Installed:** [TODAY'S_DATE]
-**AI Operating System version:** perfectlittlebusiness v1.3.0
+**AI Operating System version:** perfectlittlebusiness v1.4.0
 
 ---
 
@@ -247,7 +247,7 @@ This file is the timeline of every session. Updated automatically by `/end`.
 ## [TODAY'S_DATE] — AI Operating System Installed
 
 **What happened:**
-Initialized the AI Operating System using perfectlittlebusiness v1.3.0. Created CLAUDE.md, MEMORY.md, .gitignore, README.md, and the full AIOS Brain (brain/ folder). Your operating skills, your five AIOS Brain tools, and three protective hooks are now available.
+Initialized the AI Operating System using perfectlittlebusiness v1.4.0. Created CLAUDE.md, MEMORY.md, .gitignore, README.md, and the full AIOS Brain (brain/ folder). Your operating skills, your five AIOS Brain tools, and three protective hooks are now available.
 
 **Git state:** Not yet committed
 **Deploy state:** Not configured (optional, for later)
@@ -320,7 +320,7 @@ node_modules/
 
 ## Created
 
-[TODAY'S_DATE] using perfectlittlebusiness v1.3.0
+[TODAY'S_DATE] using perfectlittlebusiness v1.4.0
 ```
 
 ---

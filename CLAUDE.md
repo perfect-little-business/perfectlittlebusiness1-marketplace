@@ -12,9 +12,9 @@ exists to carry the canonical brain pointer for dev sessions.
 The canonical source for ALL Perfect Little Business strategy, brand, and
 offer files is, permanently:
 
-`/Users/cindymolchany/Dropbox/_00_COWORK_OS/_BRAIN/`
+`/Users/cindymolchany/Business/business-os/brain/`
 
-- Read `_BRAIN/_INDEX.md` first — it holds the file map and the
+- Read `business-os/brain/_INDEX.md` first — it holds the file map and the
   inheritance order (Offer Stack → SOT v7.0 → everything else).
 - Read brain files directly from that path. Never copy brain files into
   this project.
@@ -29,9 +29,17 @@ offer files is, permanently:
 
 ## Status surface (PLB Business OS)
 
-At the end of every session (and whenever /end runs), write/overwrite:
-`/Users/cindymolchany/Dropbox/_00_COWORK_OS/status/marketplace-root.status.json`
-following the schema in `_00_COWORK_OS/STATUS_CONVENTION.md`.
+At the end of every session (and whenever /end runs), update the AREA file:
+`~/Business/business-os/status/delivery.json`
+following the schema in `business-os/status/_schema.md`.
+
+The convention changed with the business-os migration: it is now one JSON file
+per business **area**, not one per project, so the client-installed plugin
+reports into `delivery.json` alongside the rest of delivery rather than owning
+its own file. The old
+`Dropbox/_00_COWORK_OS/status/marketplace-root.status.json` and
+`_00_COWORK_OS/STATUS_CONVENTION.md` are superseded and the paths are dead.
+Do not write there.
 
 Rules:
 - Progress surface ONLY: state, phase, now, next, blockers, open items.

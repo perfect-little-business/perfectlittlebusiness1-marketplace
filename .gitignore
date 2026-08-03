@@ -24,6 +24,9 @@ desktop.ini
 # lives alongside the repo for convenience but never ships publicly.
 _internal/
 
+# Local session handoff — private working notes, never ships to clients.
+NEXT-SESSION.md
+
 # Skill test/eval workspaces — eval scratch plus personal brain content
 # (interview transcripts, dossier drafts). Must never ship in the client
 # plugin or be committed. Canonical deliverables live in _BRAIN.
