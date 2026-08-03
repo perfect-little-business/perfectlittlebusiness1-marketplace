@@ -7,6 +7,38 @@ exists to carry the canonical brain pointer for dev sessions.
 
 ---
 
+## Publishing to clients (read this before shipping anything)
+
+**Clients do not install from this repo.** They install from
+`perfect-little-business/perfectlittlebusiness1-marketplace`. This repo is
+where the work happens; that one is the shop window.
+
+The "1" is not a mistake or a stray duplicate. Claude Cowork caches the
+marketplace list, so pushing an update here left clients on a stale copy. A
+second marketplace under a distinct name forces Cowork to pull fresh. That is
+why `.claude-plugin/marketplace.json` reads `"name": "plb"` here and
+`"name": "plb1"` there. **That single field is the only thing that may ever
+differ between the two repos.** Never sync it.
+
+**How to publish: bump the version.** That is the whole procedure.
+
+Edit the version in `perfectlittlebusiness/.claude-plugin/plugin.json` (and
+the matching one in `.claude-plugin/marketplace.json`), push to `main`, and
+`.github/workflows/publish-to-clients.yml` copies this repo into the client
+repo within about a minute. Pushing without changing the version publishes
+nothing, which is deliberate: it means day-to-day commits never leak
+half-finished work to clients.
+
+`.github/` is excluded from the sync in both directions, so each repo keeps
+its own automation.
+
+**Why this exists:** the two repos silently drifted a full release apart. The
+client-facing copy sat on v1.3.0 with 20 skills for six weeks while the work
+here reached v1.4.0 with 21, and a voice-qa bug that had been fixed here was
+still shipping to clients. Verified and corrected 2026-08-02.
+
+---
+
 ## ⚓ PLB CANONICAL BRAIN (2026-06-10)
 
 The canonical source for ALL Perfect Little Business strategy, brand, and
