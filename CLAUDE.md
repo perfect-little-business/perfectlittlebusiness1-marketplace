@@ -1,9 +1,14 @@
 # CLAUDE.md — marketplace-root
 
-The "Perfect Little Business" Claude plugin + marketplace repo. Full
-project briefing lives in root `_00_CLAUDE_CODE/CLAUDE.md` §05
-(`marketplace-root`) — including the Cowork build geography. This file
-exists to carry the canonical brain pointer for dev sessions.
+The "Perfect Little Business" Claude plugin + marketplace repo. The full
+project briefing lives in `business-os/ROOT-ORCHESTRATION.md` §05, which is
+auto-loaded in any root session as `~/Business/CLAUDE.md`. That includes the
+Cowork build geography. This file exists to carry the canonical brain pointer
+for dev sessions.
+
+*Pointer corrected 2026-08-03: this previously named
+`_00_CLAUDE_CODE/CLAUDE.md`, the pre-migration Dropbox path, tombstoned since
+2026-07-29.*
 
 ---
 
