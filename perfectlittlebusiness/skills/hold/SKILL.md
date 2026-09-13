@@ -96,10 +96,12 @@ Write `brain/inspiration/YYYY-MM-DD-slug.md` in the format below. Then rebuild t
 index:
 
 ```
-python3 <plugin>/skills/hold/scripts/hold_index.py
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/hold/scripts/hold_index.py"
 ```
 
-(from the project root; it finds `brain/inspiration/` by itself). If the script
+(from the project root; it finds `brain/inspiration/` by itself. The script lives
+next to this skill at `scripts/hold_index.py`, so if the variable is not set,
+run it by that path from the skill's folder with `--brain <project>/brain`). If the script
 cannot run in this environment, append the entry's line to `_INDEX.md` by hand in
 the same shape as the existing lines and say that you did.
 
@@ -128,7 +130,7 @@ matches.
 The script can do the first pass:
 
 ```
-python3 <plugin>/skills/hold/scripts/hold_index.py --find "pricing, saying no, scope"
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/hold/scripts/hold_index.py" --find "pricing, saying no, scope"
 ```
 
 ## Entry format
