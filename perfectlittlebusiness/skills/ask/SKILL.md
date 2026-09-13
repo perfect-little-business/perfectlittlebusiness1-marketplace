@@ -35,6 +35,7 @@ Read in this order:
 5. brain/learnings.md (especially recent entries)
 6. brain/decisions.md (especially recent)
 7. brain/wins.md
+8. brain/inspiration/_INDEX.md, if it exists (open an entry only when it plausibly bears on the question)
 
 ### Step 3: Answer
 

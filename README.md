@@ -6,9 +6,9 @@ This marketplace hosts the AI Operating Layer™ — the infrastructure that tur
 
 ## Available Plugins
 
-### perfectlittlebusiness (v1.3.0)
+### perfectlittlebusiness (v1.4.3)
 
-Your AI Operating System (AIOS), installed in one move. Connects you to your Authority HQ portal, builds your AIOS Brain through five foundational tools (Avatar, Offer, Conviction, Brand, and Source of Truth), sets up your project file structure, stands up your Cowork OS dashboard, and installs nineteen operating skills plus three protective hooks.
+Your AI Operating System (AIOS), installed in one move. Connects you to your Authority HQ portal, builds your AIOS Brain through five foundational tools (Avatar, Offer, Conviction, Brand, and Source of Truth), sets up your project file structure, stands up your Cowork OS dashboard, and installs twenty-two operating skills plus three protective hooks.
 
 [See plugin details →](./perfectlittlebusiness/README.md)
 

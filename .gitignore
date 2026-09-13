@@ -31,3 +31,8 @@ NEXT-SESSION.md
 # (interview transcripts, dossier drafts). Must never ship in the client
 # plugin or be committed. Canonical deliverables live in _BRAIN.
 perfectlittlebusiness/skills/*-workspace/
+
+# Codex instruction link — machine-local symlink to CLAUDE.md, regenerated
+# every session by ~/.claude/bin/sync-codex-mirror.sh. Never commit it.
+AGENTS.md
+.agents/

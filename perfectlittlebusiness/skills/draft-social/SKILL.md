@@ -34,6 +34,7 @@ Read:
 3. brain/voice-samples/ (all files — these are critical for tone match)
 4. brain/learnings.md (recent entries — for content material)
 5. brain/wins.md (recent entries)
+6. brain/inspiration/_INDEX.md, if it exists (stories, quotes and ideas the user is holding on to; a held entry whose connection fits the topic is often the best opener, and if you draft from one, stamp it used per `/hold`)
 
 ### Step 3: Handle Different Topic Inputs
 

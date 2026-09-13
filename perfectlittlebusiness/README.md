@@ -2,7 +2,7 @@
 
 The Perfect Little Business plugin is the infrastructure layer of your AI Operating System, installed in Claude (Cowork) and Claude Code.
 
-Install it once. You get your AIOS Brain (the `brain/` folder and five foundational tools), twenty-one working skills, the voice-qa gate, three protective hooks, your Cowork OS dashboard, and the self-improvement loop that makes every session smarter than the last.
+Install it once. You get your AIOS Brain (the `brain/` folder and five foundational tools), twenty-two working skills, the voice-qa gate, three protective hooks, your Cowork OS dashboard, and the self-improvement loop that makes every session smarter than the last.
 
 This is the operating system. Your AIOS Brain populates inside it.
 
@@ -32,6 +32,7 @@ Run these to build the second brain your whole system reads from. Each runs live
 **Brain-building:**
 - `/learn`: Capture an insight mid-session without ending the session.
 - `/decide`: Log a decision with full context and rationale.
+- `/hold`: Hold on to a story, quote, idea or observation you want to use later, with your own words about what you would connect it to. Finds them again when you draft, and stamps them when they ship.
 - `/ask`: Ask Claude a question grounded in your full AIOS Brain.
 
 **Thought leadership:**
@@ -60,7 +61,7 @@ Run these to build the second brain your whole system reads from. Each runs live
 
 ### Your AIOS Brain folder
 
-When you run `/setup`, the plugin creates a `brain/` folder seeded with eleven files and folders:
+When you run `/setup`, the plugin creates a `brain/` folder seeded with twelve files and folders:
 
 ```
 brain/
@@ -74,7 +75,8 @@ brain/
 ├── wins.md                 what's working
 ├── voice-samples/          your writing examples for tone matching
 ├── reference/              PDFs, articles, transcripts
-└── templates/              reusable formats
+├── templates/              reusable formats
+└── inspiration/            stories, quotes and ideas you are holding on to (via /hold)
 ```
 
 Your AIOS Brain is yours. Edit any file any time. The plugin never touches it on updates.

@@ -69,6 +69,7 @@ Create `brain/` with these files (templates in the reference section below):
 - `voice-samples/README.md` — instructions for adding voice samples
 - `reference/README.md` — instructions for reference docs
 - `templates/README.md` — instructions for reusable formats
+- `inspiration/README.md` — instructions for the things you hold on to (stories, quotes, ideas) via `/hold`
 
 The five foundational-tool files (`source-of-truth`, `convictions`, `avatar-profile`, `offer-architecture`, `brand-style-guide`) are your AIOS Brain. `/setup` stubs them; the five AIOS Brain tools fill them in.
 
@@ -91,6 +92,7 @@ Confirm each file exists:
 - [ ] brain/voice-samples/README.md
 - [ ] brain/reference/README.md
 - [ ] brain/templates/README.md
+- [ ] brain/inspiration/README.md
 
 ### Phase 6: Completion Message
 
@@ -101,8 +103,8 @@ Output exactly this message:
 
 **What's now running in this project:**
 - Core files: CLAUDE.md, MEMORY.md, .gitignore, README.md
-- Your AIOS Brain: the brain/ folder, eleven files ready to grow with you
-- Operating skills: /start, /end, /hygiene, /learn, /decide, /recap, /digest, /ask, /granola-pull, /draft-social, /how-to
+- Your AIOS Brain: the brain/ folder, twelve files ready to grow with you
+- Operating skills: /start, /end, /hygiene, /learn, /decide, /hold, /recap, /digest, /ask, /granola-pull, /draft-social, /how-to
 - Your five AIOS Brain tools: /avatar-profile, /offer-architect, /conviction-map, /brand-style-guide, /source-of-truth
 - Plus /voice-qa (brand-voice gate), /gravity-dossier, and /dossier-qa (dossier consistency gate)
 - Three protective hooks: credential guard, forbidden-language guard, session-end nudge
@@ -165,6 +167,7 @@ This shapes every decision in this project. Reference it when making strategic c
 - One project per session — do not switch contexts
 - Use `/learn` to capture insights mid-session
 - Use `/decide` after meaningful decisions
+- Use `/hold` to hold on to a story, quote or idea you want to use later
 - Use `/ask` for questions grounded in your context
 
 ### At Session End
@@ -196,7 +199,8 @@ This shapes every decision in this project. Reference it when making strategic c
     ├── wins.md               (what's working)
     ├── voice-samples/        (writing examples for tone matching)
     ├── reference/            (PDFs, articles, source docs)
-    └── templates/            (reusable formats)
+    ├── templates/            (reusable formats)
+    └── inspiration/          (stories, quotes, ideas you are holding on to)
 ```
 
 The AIOS Brain is yours. Edit any file any time.
@@ -584,6 +588,26 @@ Examples:
 - Frameworks you've developed
 
 Organize as you like. Subfolders are fine.
+```
+
+### brain/inspiration/README.md
+
+```markdown
+# Inspiration
+
+The things you hold on to. A story a podcast guest told, a line you want to keep,
+an idea for an episode or a post, something you noticed that connects to your work.
+You do not decide up front what it is for. You say "hold on to this" and it lands here.
+
+How it works:
+
+- `/hold` captures one. It keeps the thing in your words, plus one sentence from you
+  about what you would connect it to. That sentence is what makes it findable later.
+- `_INDEX.md` is one line per entry, generated. Never edit it by hand.
+- `/hold find {topic}` brings back the entries that fit when you are drafting.
+- `/hold used {entry} in {where}` stamps one when it ships, so you never repeat it.
+
+Empty at install. It fills from the first "hold on to this."
 ```
 
 ### brain/templates/README.md
