@@ -56,21 +56,40 @@ The folder is created the first time `/hold` runs if `/setup` did not create it.
   it. One memo can hold several things; split it into one entry each and say how
   many you found before writing anything.
 
-**Step 2: Keep their words.**
+**Step 2: The three questions. Every hold answers all three.**
 
-Two fields carry the value, and both are the user's words, quoted, never
-paraphrased:
+"Hold on to that podcast episode about X" is a bookmark, not a hold. An entry is
+useful later only if it carries what the user's head was carrying, so each one has
+to answer three things, and each maps to a job the entry does later:
 
-- **The thing itself**, as they told it. If they told a story in three sentences,
-  keep the three sentences. Do not tighten it, do not tidy it, do not add facts
-  they did not say. If the story is from a podcast or a book, record the source
-  they named and nothing more.
-- **What they would connect it to.** This is the field that pays off later. The
-  story is easy to find again; the connection is what gets forgotten. If they said
-  "I know exactly what I would connect it to" and did not say what, **ask for the
-  one sentence before filing**: "What would you connect it to? One sentence in
-  your words is enough." If they cannot say yet, file it with the field marked
-  `(not yet said)` rather than inventing one.
+1. **What is it?** The story, quote or idea, told the way they would tell it, and
+   where it came from. The thing itself.
+2. **What would you connect it to? What did it make you think of?** The idea,
+   belief or lesson it illustrates for their audience. **This is the retrieval
+   key**: the tags come from it, and it is the sentence they would have forgotten
+   in ten months. **Required.** Without it, the entry is a bookmark.
+3. **Where do you see it landing?** A podcast, a newsletter, a social post, a
+   client conversation, a course, a talk, or "not sure yet." This is what lets
+   recall fire at the right moment: an episode outline offers what they saw going
+   into an episode; a newsletter draft offers newsletter material. "Not sure yet"
+   is a fine answer and the entry still works.
+
+**How to ask, so capture stays fast.** They can answer all three in one breath,
+memo-style, and usually do. Read what they gave, then ask **only for the ones they
+skipped, in one message, never one at a time**:
+
+> Two things and it is held: what would you connect it to? And where do you see it
+> landing, if you know?
+
+Accept "not sure yet" for the third. Do not accept it for the second: if they
+genuinely cannot say what it connects to, file it with `(not yet said)` and say
+plainly that the entry will not come back on its own until they do. If they
+volunteer a line they want kept word for word, keep it under Notes. Never ask a
+fourth question.
+
+All three answers are **the user's words, quoted, never paraphrased**. Do not
+tighten, tidy, or add facts they did not say. If the story is from a podcast or a
+book, record the source they named and nothing more.
 
 **Step 3: Read the brain for tags, never invent a vocabulary.**
 
@@ -80,6 +99,10 @@ the name) or in `CLAUDE.md`. If one exists, tag the entry with its pillars, usin
 its exact names. If none exists, leave `pillars` empty and tag nothing. A story
 bank with made-up categories stops being trusted, so the taxonomy comes from the
 business or it does not exist.
+
+`surfaces` comes from question 3, as short lowercase labels in the business's own
+words (`podcast`, `newsletter`, `linkedin`, `client-call`, `course`, `talk`).
+Several are fine. "Not sure yet" means an empty list.
 
 Pick a `kind`: `story`, `quote`, `idea` or `observation`. Pick the one that fits;
 do not add kinds.
@@ -123,14 +146,18 @@ part of finishing the draft. If you drafted from a held entry, stamp it.
 
 Read `_INDEX.md`, then open every entry whose index line or text plausibly fits the
 topic. Return the two to four best fits, each as: the title, the kind, the source,
-and the user's own connection sentence quoted. Held entries first, used entries
-after, marked as used. If nothing fits, say so in one line; never pad with weak
-matches.
+the user's own connection sentence quoted, and where they saw it landing. Held
+entries first, used entries after, marked as used. If nothing fits, say so in one
+line; never pad with weak matches.
+
+When the drafting session knows its surface (an episode outline, the newsletter),
+prefer entries whose `surfaces` include it, then fall back to the rest.
 
 The script can do the first pass:
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/hold/scripts/hold_index.py" --find "pricing, saying no, scope"
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/hold/scripts/hold_index.py" --find "pricing" --surface podcast
 ```
 
 ## Entry format
@@ -141,28 +168,34 @@ held: 2026-09-12
 kind: story
 source: "Conan O'Brien's podcast, a guest's story"
 pillars: []
+surfaces: []
 status: held
 used_in: []
 ---
 # {A title the user would recognize, six words or fewer}
 
 ## The thing itself
-{Their words. The story, the quote, the idea, as told.}
+{Their words. The story, the quote, the idea, as told. Question 1.}
 
 ## What I would connect it to
-> {Their words, quoted. Or: (not yet said)}
+> {Their words, quoted. Question 2. Or: (not yet said)}
+
+## Where I see it landing
+> {Their words, quoted. Question 3. Or: (not sure yet)}
 
 ## Notes
-{Anything else they said about it. Delete this section if empty.}
+{Anything else they said about it, including a line they want kept word for word.
+Delete this section if empty.}
 ```
 
-`held` is the capture date. `used_in` is a list of places, in the user's own naming
+`held` is the capture date. `surfaces` is question 3 as labels (empty means not
+sure yet). `used_in` is a list of places, in the user's own naming
 ("EP 152", "newsletter 2026-10-03"). `status` is `held` or `used`, nothing else.
 
 ## Notes for Claude Executing This Skill
 
-- **Speed over completeness.** A held entry with a good title, the thing itself and
-  the connection is complete. Do not interview.
+- **Three questions, asked together, only the missing ones.** That is the whole
+  interview. A fourth required question is where capture stops happening.
 - **Their words, every time.** The moment you paraphrase the connection, the entry
   loses the thing that made it worth keeping. Quote.
 - **Never add facts to a story.** If they said "the Matt Groening story about the
