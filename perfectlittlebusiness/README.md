@@ -1,8 +1,8 @@
-# Perfect Little Business — Your AI Operating System
+# Perfect Little Business: Your AI Operating System
 
-The Perfect Little Business plugin is the infrastructure layer of your AI Operating System, installed in Claude (Cowork) and Claude Code.
+The Perfect Little Business plugin is the infrastructure layer of your AI Operating System, installed in Claude (Cowork), Claude Code and Codex. It is also your way into Perfect Little Business HQ from your own AI: every planning step in HQ runs here too, and either way the result lands on your business plan in HQ.
 
-Install it once. You get your AIOS Brain (the `brain/` folder and five foundational tools), twenty-two working skills, the voice-qa gate, three protective hooks, your Cowork OS dashboard, and the self-improvement loop that makes every session smarter than the last.
+Install it once. You get your AIOS Brain (the `brain/` folder), ten planning steps that save to your plan in HQ, the Source of Truth, twenty-seven working skills in all, the voice-qa gate, three protective hooks, and the self-improvement loop that makes every session smarter than the last.
 
 This is the operating system. Your AIOS Brain populates inside it.
 
@@ -10,21 +10,31 @@ This is the operating system. Your AIOS Brain populates inside it.
 
 ## What This Plugin Installs
 
-### Your AIOS Brain (five foundational tools)
+### Your planning steps
 
-Run these to build the second brain your whole system reads from. Each runs live from Authority HQ through the bundled connector and saves into your `brain/` folder.
+The same steps as in Perfect Little Business HQ, in the same order. Each one fetches the step fresh from HQ, works from what your plan already holds, and when you're done saves the result to your business plan in HQ and to your `brain/` folder.
 
-- `/avatar-profile`: Your Avatar Emotional Profile — who you serve.
-- `/offer-architect`: Your Offer Architecture — what you sell.
-- `/conviction-map`: Your Conviction Map — what you believe and stand for.
-- `/brand-style-guide`: Your Brand Style Guide — how you sound and look.
-- `/source-of-truth`: Your Source of Truth — the master document that unifies the rest.
+- `/business-today`: Your Business Today. Where your business stands right now, in plain numbers.
+- `/avatar-profile`: Avatar Emotional Profile. Who you serve.
+- `/offer-architect`: Offer Architect. The problem you solve, your promise, and what you sell.
+- `/conviction-map`: Conviction Map. What you believe and stand for.
+- `/what-makes-you-different`: What Makes You Different. Why your ideal client chooses you.
+- `/brand-style-guide`: Brand Style Guide. How you sound and look.
+- `/your-story`: Your Story. Where it began, why it exists, the impact you're here to make.
+- `/goals-and-vision`: Goals and Vision. The next 12 months and this quarter's goal. Run it again each quarter.
+- `/sales-path`: Your Sales Path. How a stranger becomes a paying client, and the numbers it needs.
+- `/marketing-plan`: Marketing Plan. Where your marketing energy goes this quarter. Saving it fills your content calendar in HQ.
+
+Website Copy and the Directory Dossier stay in HQ. They open there after a short call with the Perfect Little Business team.
+
+### Your Source of Truth
+- `/source-of-truth`: Pulls your whole business plan from HQ into one document, `brain/source-of-truth.md`, ready to hand to any AI. Run it again whenever your plan changes.
 
 ### Operating skills
 
 **Core infrastructure:**
 - `/setup`: One-time orchestrator. Creates your project structure, AIOS Brain folder, and CLAUDE.md.
-- `/start`: Loads your context at the beginning of every session.
+- `/start`: Loads your context at the beginning of every session, including your plan in HQ and this week's content calendar.
 - `/end`: Closes the session cleanly. Updates MEMORY.md, learnings.md, wins.md, and commits.
 - `/hygiene`: Weekly health check.
 - `/recap`: "Where am I?" lifeline when returning to a project.
@@ -45,38 +55,41 @@ Run these to build the second brain your whole system reads from. Each runs live
 **Test-drive automations (use these while you build your AIOS Brain):**
 - `/digest`: Personal weekly summary from your MEMORY, learnings, and wins.
 - `/granola-pull`: Pull a Granola meeting into your AIOS Brain. Surfaces candidate learnings.
-- `/draft-social`: Draft social posts in your voice from your recent learnings and wins.
-
-### Your dashboard
-- `/dashboard`: Stands up your personalized Cowork OS dashboard as a pinnable Artifact — pipeline, day, goals, projects, the numbers, and your skills in one pane.
+- `/draft-social`: Draft social posts in your voice from your recent learnings and wins. Offers the pieces planned on your content calendar in HQ, and marks the finished post as drafted there.
 
 ### The voice-qa gate
 - `/voice-qa`: Checks any draft against your brand voice rules and the universal "sounds like AI" tells before it ships. The Dossier runs it automatically; you can also run it on anything.
 
 ### Three Protective Hooks
 
-- **Credential guard** — Blocks accidental commits of API keys, secrets, and credentials.
-- **Forbidden-language guard** — Catches the hype-culture clichés your brand never uses before they ship.
-- **Session-end nudge** — Reminds you to run `/end` at natural session-closing moments.
+- **Credential guard**: Blocks accidental commits of API keys, secrets, and credentials.
+- **Forbidden-language guard**: Catches the hype-culture clichés your brand never uses before they ship.
+- **Session-end nudge**: Reminds you to run `/end` at natural session-closing moments.
 
 ### Your AIOS Brain folder
 
-When you run `/setup`, the plugin creates a `brain/` folder seeded with twelve files and folders:
+When you run `/setup`, the plugin creates a `brain/` folder. If you already have a plan in Perfect Little Business HQ, `/setup` brings it in. Each planning step adds or updates its own file as you run it:
 
 ```
 brain/
-├── source-of-truth.md      what you know
-├── convictions.md          what you believe
-├── avatar-profile.md       who you serve
-├── offer-architecture.md   what you sell
-├── brand-style-guide.md    how you sound and look
-├── learnings.md            what you've discovered (grows session by session)
-├── decisions.md            decisions made, with rationale
-├── wins.md                 what's working
-├── voice-samples/          your writing examples for tone matching
-├── reference/              PDFs, articles, transcripts
-├── templates/              reusable formats
-└── inspiration/            stories, quotes and ideas you are holding on to (via /hold)
+├── source-of-truth.md          your whole plan in one document
+├── business-today.md           where the business stands
+├── avatar-profile.md           who you serve
+├── offer-architecture.md       what you sell
+├── convictions.md              what you believe
+├── what-makes-you-different.md why clients choose you
+├── brand-style-guide.md        how you sound and look
+├── your-story.md               where it began, why it exists
+├── goals-and-vision.md         where it's going, this quarter
+├── sales-path.md               how a stranger becomes a client
+├── marketing-plan.md           where marketing energy goes
+├── learnings.md                what you've discovered (grows session by session)
+├── decisions.md                decisions made, with rationale
+├── wins.md                     what's working
+├── voice-samples/              your writing examples for tone matching
+├── reference/                  PDFs, articles, transcripts
+├── templates/                  reusable formats
+└── inspiration/                stories, quotes and ideas you are holding on to (via /hold)
 ```
 
 Your AIOS Brain is yours. Edit any file any time. The plugin never touches it on updates.
@@ -87,19 +100,34 @@ Your AIOS Brain is yours. Edit any file any time. The plugin never touches it on
 
 ### In Claude (Cowork)
 
-1. Open **Customize → Personal plugins**.
-2. Click **+ → Add marketplace → Sync a marketplace from a GitHub repository**.
-3. Paste `cmolchany/perfectlittlebusiness-marketplace`.
-4. Install the **perfectlittlebusiness** plugin. The bundled connector and all skills install with it. No tokens, no configuration.
+1. Open **Customize**, then **Personal plugins**.
+2. Click **+**, then **Add marketplace**, then **Sync a marketplace from a GitHub repository**.
+3. Paste `perfect-little-business/perfectlittlebusiness1-marketplace`.
+4. Install the **perfectlittlebusiness** plugin. Its connection to Perfect Little Business HQ and all its skills install with it.
 
-### In Claude Code (CLI)
+### In Claude Code
 
 ```
-/plugin marketplace add cmolchany/perfectlittlebusiness-marketplace
-/plugin install perfectlittlebusiness@plb
+/plugin marketplace add perfect-little-business/perfectlittlebusiness1-marketplace
+/plugin install perfectlittlebusiness@plb1
 ```
 
-Then in any project folder, run `/setup` (bare in Cowork; `/perfectlittlebusiness:setup` in Claude Code). Answer five questions. Your AIOS Brain is installed.
+### In Codex
+
+```
+codex plugin marketplace add perfect-little-business/perfectlittlebusiness1-marketplace
+codex plugin add perfectlittlebusiness@plb1
+```
+
+### Then sign in to HQ, once
+
+The plugin's planning steps read and save your plan in Perfect Little Business HQ, so the first time you run one, sign in with the email of your HQ account:
+
+- **Claude (Cowork):** Customize, then Connectors, then Perfect Little Business, then Connect.
+- **Claude Code:** type `/mcp`, choose `plugin:perfectlittlebusiness:perfectlittlebusiness`, then Authenticate.
+- **Codex:** run `codex mcp login perfectlittlebusiness` in a terminal.
+
+Then in any project folder, run `/setup`. Command names are bare in Cowork (`/setup`) and start with the plugin's name in Claude Code (`/perfectlittlebusiness:setup`).
 
 ---
 
@@ -107,47 +135,35 @@ Then in any project folder, run `/setup` (bare in Cowork; `/perfectlittlebusines
 
 If you're reading this, you've installed the **Perfect Little Business plugin** and stood up your AI Operating System.
 
-The infrastructure is running. The intelligence layer is what you populate next.
+The infrastructure is running. Your plan is what you build next.
 
-### Build your AIOS Brain
+### Build your plan
 
-Run your five foundational tools, in order:
+Run your planning steps in order, here or in HQ, whichever suits you:
 
-`/avatar-profile` → `/offer-architect` → `/conviction-map` → `/brand-style-guide` → `/source-of-truth`
+`/business-today` → `/avatar-profile` → `/offer-architect` → `/conviction-map` → `/what-makes-you-different` → `/brand-style-guide` → `/your-story` → `/goals-and-vision` → `/sales-path` → `/marketing-plan`
 
-Each runs live from Authority HQ and saves into your `brain/` folder. When they're done, your AIOS Brain holds the second brain that makes every future session smarter than the last.
+Each one saves to your business plan in HQ and to your `brain/` folder. `/start` tells you which one is next.
 
 → [hq.perfectlittlebusiness.com](https://hq.perfectlittlebusiness.com)
 
 ---
 
-## After Your AIOS Brain
+## When Your Plan Is in Place
 
-When your foundation is in place, two paths stay open.
+Your plan in Perfect Little Business HQ is home base. Every step you finish shows there, and your content calendar fills from your Marketing Plan.
 
-### Collective Wisdom
-
-The ongoing methodology and community, where the full Perfect Little Business doctrine lives and stays current. You'll get plugin updates, methodology evolutions, and the community of other AIOS operators building alongside you.
-
-### Authority Directory
-
-When you're ready to build the public-facing asset AI recommends in your domain:
-
-- **Self-install** — your own Authority Directory codebase, configured and yours to run
-- **Done-for-you** — built by the PLB team
-
-Ask about current options on a call.
+When you're ready for a website or an Authority Directory (the public asset AI engines read when someone asks who to hire in your field), Website Copy and the Directory Dossier open in HQ after a short call with the Perfect Little Business team. You can book it from your plan in HQ.
 
 ---
 
 ## About Perfect Little Business
 
-PLB builds AI Operating Layers for entrepreneurs who are subject matter experts — coaches, consultants, specialists, and founder-led companies.
+Perfect Little Business builds AI Operating Layers for entrepreneurs who are subject matter experts: coaches, consultants, specialists, and founder-led companies.
 
 - Founder: [Cindy Molchany](https://perfectlittlebusiness.com)
 - Web: [perfectlittlebusiness.com](https://perfectlittlebusiness.com)
 - Contact: hello@perfectlittlebusiness.com
-- Plugin issues: [github.com/cmolchany/perfectlittlebusiness-marketplace/issues](https://github.com/cmolchany/perfectlittlebusiness-marketplace/issues)
 
 ---
 
@@ -155,4 +171,4 @@ PLB builds AI Operating Layers for entrepreneurs who are subject matter experts 
 
 Proprietary. Perfect Little Business. This plugin is provided to Perfect Little Business clients for personal use. Please don't redistribute. If a friend needs this, send them to [perfectlittlebusiness.com](https://perfectlittlebusiness.com).
 
-— Cindy Molchany
+Cindy Molchany

@@ -1,25 +1,66 @@
 ---
 name: source-of-truth
-description: Build your Source of Truth, the fifth of the five foundational tools in your AIOS Brain, the master document that unifies your avatar, offer, convictions, and brand. Use when the user wants to compile, synthesize, or build their Source of Truth / business SOT, or says "source of truth", "step 5", "my master brand doc". Runs the live Source of Truth stage from Authority HQ.
+description: Build your Source of Truth, the one document that holds your whole business plan, ready to hand to any AI. Pulls every filled section of your plan from Perfect Little Business HQ into brain/source-of-truth.md and names what's still empty and which step fills it. Use when the user wants to compile, refresh, or build their Source of Truth / business SOT / master brand doc, or says "source of truth", "my master doc", "pull down my plan", "refresh my source of truth", "download my plan".
 ---
 
-# Source of Truth (AIOS Brain · Tool 5 of 5)
+# Source of Truth
 
-A thin wrapper that runs the Perfect Little Business **Source of Truth** stage live from Authority HQ. The methodology lives server-side; this skill fetches it and conducts the stage with the user. (Thin-skill / fat-server: the prompt is never copied into this file, so it stays current and client-shippable.)
+Your Source of Truth is your whole business plan in one document: the thing you hand to Claude, ChatGPT or a new team member so they know your business. In Perfect Little Business HQ the plan fills in section by section as you finish your planning steps. This skill pulls it down into `brain/source-of-truth.md`, so every session in this project works from the current plan.
+
+It doesn't run an interview of its own. The story part of the old Source of Truth is now the **Your Story** step (`your-story`).
 
 ## How it runs
 
-1. **Fetch the stage.** Call the `get_stage_prompt` tool from the **Perfect Little Business** connector with `stage_key: "source_of_truth"`.
-   - If the tool isn't available, the connector isn't connected — tell the user to connect the **Perfect Little Business** connector (Customize → Connectors), then retry.
-   - If it returns a *"not an active client yet"* message instead of a prompt, relay that warmly and stop — their account isn't active.
+### 1. Read the plan
+Call `get_plan` from the Perfect Little Business connection, with no section.
+- **The tool isn't available:** the user hasn't signed in to their Perfect Little Business connection yet. Tell them how, for where they're working, then stop:
+  - Claude desktop app or claude.ai: Customize, then Connectors, then Perfect Little Business, then Connect.
+  - Claude Code: type `/mcp`, choose `plugin:perfectlittlebusiness:perfectlittlebusiness`, then Authenticate.
+  - Codex: in a terminal, run `codex mcp login perfectlittlebusiness`.
+  Signing in opens HQ's sign-in page in their browser. They use the email of their HQ account.
+- **It says the workspace isn't an active client yet:** relay that warmly and stop.
+- **It says their plan in HQ isn't switched on:** use the fallback at the end of this file.
 
-2. **Adopt the returned prompt.** The tool returns a `system_prompt` and an `opening_message`. For the rest of this conversation, operate **exactly** as that `system_prompt` instructs — it is your complete operating instruction for this stage. Open by presenting the `opening_message` to the user.
+### 2. Pull each filled section
+For every section the overview shows as filled, call `get_plan` with its key and take the full document.
 
-3. **Conduct the stage.** Follow the system prompt's flow precisely — it controls the questions, the sections, and how completion works. One step at a time. Do not add, skip, reorder, or summarize away anything it specifies.
+### 3. Write the Source of Truth
+Write `brain/source-of-truth.md` (create `brain/` if needed), replacing what was there, in this shape:
 
-4. **Save the output.** When the stage completes, save the finished output to the user's AIOS Brain as `brain/source-of-truth.md` (create the folder if needed). Tell the user where it's saved.
-   - *Server sync note:* writing the result back to Authority HQ is coming via a dedicated write tool. For now the canonical copy is the local file.
+```
+# {Business name}: Source of Truth
 
-## Scope
+Your business plan from Perfect Little Business HQ, pulled down {today's date}. Run `source-of-truth` again whenever your plan changes.
 
-Run only the Source of Truth stage. The Source of Truth is usually built last, after the other four stages. If the user asks for something else, point them to the right sibling skill — `avatar-profile`, `offer-architect`, `conviction-map`, `brand-style-guide` — and return here.
+## 1. Business at a glance
+{the card, then the full document}
+
+## 2. Ideal client
+{the full document}
+
+... every filled section, in the plan's order, with its number and title ...
+
+---
+
+Not filled in yet: {titles of the empty sections}.
+```
+
+- Use each section's full document as it stands. Don't rewrite, summarize or tidy it.
+- Nest each document's own headings one level under its section heading (a `#` heading becomes `###`).
+- For Business at a glance, put the card first and then the document, because the card holds what the business does and the document holds the sign-up facts.
+
+### 4. Tell the user
+In a few plain lines:
+- It's saved to `brain/source-of-truth.md`, and how many sections it holds.
+- Which sections are still empty, each with the step that fills it: Business at a glance (`business-today`), Ideal client (`avatar-profile`), Problem and promise and Your offers (`offer-architect`), What makes you different (`what-makes-you-different`), Values and convictions (`conviction-map`), Brand (`brand-style-guide`), Your story (`your-story`), Goals and vision (`goals-and-vision`), Sales path (`sales-path`), Marketing plan (`marketing-plan`). Website and Authority Directory fills from Website Copy or the Directory Dossier, which open in HQ after a short call with the Perfect Little Business team.
+- Offer to start the first empty one.
+
+## Fallback: the plan isn't switched on in HQ
+Run the Source of Truth step instead, the way this skill used to:
+1. Call `get_stage_prompt` with `stage_key: "source_of_truth"`.
+2. Read `brain/` (avatar-profile.md, offer-architecture.md, convictions.md, brand-style-guide.md and anything else there) and `CLAUDE.md`, and treat them as what the step calls the client brain. Never ask for what they already hold.
+3. Operate exactly as the returned system prompt instructs. Open with its opening message, word for word. One question at a time.
+4. When the final document is finished, write it to `brain/source-of-truth.md` and tell the user it's saved there. Nothing goes to HQ in this case.
+
+## How to talk about it
+Call it "your plan in Perfect Little Business HQ" or "HQ", and "your Perfect Little Business connection". Never use technical names for the connection.

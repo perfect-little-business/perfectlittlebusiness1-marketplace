@@ -1,6 +1,6 @@
 ---
 name: setup
-description: One-time orchestrator that installs your AI Operating System in this project. Creates CLAUDE.md, MEMORY.md, and your AIOS Brain (the brain/ folder), then confirms everything is in place. Run this once per new project.
+description: One-time orchestrator that installs your AI Operating System in this project. Creates CLAUDE.md, MEMORY.md, and your AIOS Brain (the brain/ folder), then confirms everything is in place. If you already have a business plan in Perfect Little Business HQ, it brings that plan into the brain/ folder. Run this once per new project.
 ---
 
 # /setup — AIOS Brain & Operating System Installer
@@ -26,9 +26,17 @@ Do not run this in a project that already has CLAUDE.md unless the user wants to
 3. Wait for user choice before proceeding.
 4. If no existing setup, continue.
 
+### Phase 1b: Check for a Plan in Perfect Little Business HQ
+
+If the Perfect Little Business connection's tools are available, call `get_plan` with no section.
+- **It returns their plan:** this user already has a Perfect Little Business HQ account. Note which sections are filled. Tell them in one line: "You already have a business plan in Perfect Little Business HQ, so I'll bring it into this project instead of starting from scratch."
+- **It says the plan isn't switched on, or the workspace isn't an active client yet, or the tools aren't available:** carry on as a new setup. Don't stop to fix the connection here; the completion message says how to sign in.
+
 ### Phase 2: Gather Context (Five Questions)
 
 Ask one at a time. Wait for each answer before continuing.
+
+If Phase 1b found a plan, don't ask Q3, Q4 or Q5 cold. Draft each answer from the plan and ask the user to confirm or correct it, one at a time: Q3 from Business at a glance (plus Ideal client and Problem and promise, if filled), Q4 from Brand, Q5 from Values and convictions. Ask Q1 and Q2 as written. Ask any question the plan doesn't cover as written.
 
 **Q1:** "What's your project name? (e.g., coaching-directory, saas-platform, creative-studio)"
 
@@ -71,7 +79,25 @@ Create `brain/` with these files (templates in the reference section below):
 - `templates/README.md` — instructions for reusable formats
 - `inspiration/README.md` — instructions for the things you hold on to (stories, quotes, ideas) via `/hold`
 
-The five foundational-tool files (`source-of-truth`, `convictions`, `avatar-profile`, `offer-architecture`, `brand-style-guide`) are your AIOS Brain. `/setup` stubs them; the five AIOS Brain tools fill them in.
+The planning files are your AIOS Brain. `/setup` stubs five of them; the planning steps fill them in, and add their own files as they run (business-today.md, what-makes-you-different.md, your-story.md, goals-and-vision.md, sales-path.md, marketing-plan.md).
+
+**If Phase 1b found a plan, pull it down now.** For each filled section, call `get_plan` with its key and write its full document to the matching file, replacing the stub:
+
+| Plan section | File |
+|---|---|
+| business_at_a_glance | `brain/business-today.md` |
+| ideal_client | `brain/avatar-profile.md` |
+| problem_and_promise, your_offers | `brain/offer-architecture.md` (if both hold the same document, write it once; if not, write each under its own heading) |
+| what_makes_you_different | `brain/what-makes-you-different.md` |
+| values_and_convictions | `brain/convictions.md` (in place of the Q5 template) |
+| brand | `brain/brand-style-guide.md` |
+| your_story | `brain/your-story.md` |
+| website_and_directory | `brain/website-and-directory.md` |
+| goals_and_vision | `brain/goals-and-vision.md` |
+| sales_path | `brain/sales-path.md` |
+| marketing_plan | `brain/marketing-plan.md` |
+
+Then write `brain/source-of-truth.md` the way the `source-of-truth` skill does: the whole plan in one document, in place of the stub. Empty sections keep their stub, or get no file. Write each document as it stands; don't rewrite or summarize it.
 
 ### Phase 5: Verification
 
@@ -93,6 +119,7 @@ Confirm each file exists:
 - [ ] brain/reference/README.md
 - [ ] brain/templates/README.md
 - [ ] brain/inspiration/README.md
+- [ ] If Phase 1b found a plan: one file per filled section, from the table in Phase 4
 
 ### Phase 6: Completion Message
 
@@ -103,9 +130,10 @@ Output exactly this message:
 
 **What's now running in this project:**
 - Core files: CLAUDE.md, MEMORY.md, .gitignore, README.md
-- Your AIOS Brain: the brain/ folder, twelve files ready to grow with you
+- Your AIOS Brain: the brain/ folder, ready to grow with you [if Phase 1b found a plan, add: ", with your business plan from Perfect Little Business HQ already in it"]
 - Operating skills: /start, /end, /hygiene, /learn, /decide, /hold, /recap, /digest, /ask, /granola-pull, /draft-social, /how-to
-- Your five AIOS Brain tools: /avatar-profile, /offer-architect, /conviction-map, /brand-style-guide, /source-of-truth
+- Your planning steps, the same ones as in Perfect Little Business HQ. Each saves to your plan in HQ and to brain/: /business-today, /avatar-profile, /offer-architect, /conviction-map, /what-makes-you-different, /brand-style-guide, /your-story, /goals-and-vision, /sales-path, /marketing-plan
+- /source-of-truth: your whole plan from HQ in one document
 - Plus /voice-qa (brand-voice gate), /gravity-dossier, and /dossier-qa (dossier consistency gate)
 - Three protective hooks: credential guard, forbidden-language guard, session-end nudge
 
@@ -114,10 +142,12 @@ Output exactly this message:
 - `/granola-pull` — pull meetings into your brain
 - `/draft-social` — draft posts in your voice
 
-**Next move:** Type `/start` to confirm the system loads. Then build your AIOS Brain by running your five foundational tools, beginning with `/avatar-profile`.
+**Next move:** Type `/start` to confirm the system loads. Then [if Phase 1b found a plan: "pick up your plan where it stands; /start names the next step." Otherwise: "start your plan with `/business-today`."]
 
 The operating system is installed. Your AIOS Brain is what you build inside it.
 ```
+
+If the Perfect Little Business connection's tools weren't available in Phase 1b, add one line after the message: "To connect this project to your plan in Perfect Little Business HQ, sign in to your Perfect Little Business connection (in Claude: Customize, then Connectors; in Claude Code: type /mcp; in Codex: run `codex mcp login perfectlittlebusiness` in a terminal), then run /source-of-truth."
 
 ---
 
@@ -131,7 +161,7 @@ Use this template. Replace [BRACKETED] with user answers. Replace [TODAY'S_DATE]
 **Project:** [PROJECT_NAME]
 **Role:** [USER_ROLE]
 **Installed:** [TODAY'S_DATE]
-**AI Operating System version:** perfectlittlebusiness v1.4.0
+**AI Operating System version:** perfectlittlebusiness v1.5.0
 
 ---
 
@@ -189,11 +219,17 @@ This shapes every decision in this project. Reference it when making strategic c
 ├── README.md          ← Project overview
 ├── .gitignore         ← Exclusion list
 └── brain/             ← Your AIOS Brain
-    ├── source-of-truth.md    (what you know)
-    ├── convictions.md        (what you believe)
+    ├── source-of-truth.md    (your whole plan, pulled from HQ)
+    ├── business-today.md     (where the business stands)
     ├── avatar-profile.md     (who you serve)
     ├── offer-architecture.md (what you sell)
+    ├── convictions.md        (what you believe)
+    ├── what-makes-you-different.md
     ├── brand-style-guide.md  (how you sound and look)
+    ├── your-story.md         (where it began, why it exists)
+    ├── goals-and-vision.md   (where it's going, this quarter)
+    ├── sales-path.md         (how a stranger becomes a client)
+    ├── marketing-plan.md     (where marketing energy goes)
     ├── learnings.md          (what you've discovered)
     ├── decisions.md          (decisions made, with rationale)
     ├── wins.md               (what's working)
@@ -232,7 +268,7 @@ When advising you, Claude prioritizes your learnings.md over generic best practi
 
 ## Where the Methodology Lives
 
-This plugin installs the *infrastructure layer* — your AIOS Brain and the operating skills. The Perfect Little Business methodology and full doctrine live in **Collective Wisdom** (perfectlittlebusiness.com), kept current there as the methodology evolves.
+This plugin installs the *infrastructure layer*: your AIOS Brain and the operating skills. The planning steps themselves live in **Perfect Little Business HQ** (hq.perfectlittlebusiness.com) and are kept current there; each one runs here or in HQ and saves to your plan in HQ.
 
 This file is yours. Your `brain/` folder is yours. Both stay clean by living separately from the methodology.
 ```
@@ -251,13 +287,13 @@ This file is the timeline of every session. Updated automatically by `/end`.
 ## [TODAY'S_DATE] — AI Operating System Installed
 
 **What happened:**
-Initialized the AI Operating System using perfectlittlebusiness v1.4.0. Created CLAUDE.md, MEMORY.md, .gitignore, README.md, and the full AIOS Brain (brain/ folder). Your operating skills, your five AIOS Brain tools, and three protective hooks are now available.
+Initialized the AI Operating System using perfectlittlebusiness v1.5.0. Created CLAUDE.md, MEMORY.md, .gitignore, README.md, and the full AIOS Brain (brain/ folder). Your operating skills, your planning steps, and three protective hooks are now available.
 
 **Git state:** Not yet committed
 **Deploy state:** Not configured (optional, for later)
 
 **Open items / next session:**
-- Build your AIOS Brain: run `/avatar-profile`, `/offer-architect`, `/conviction-map`, `/brand-style-guide`, then `/source-of-truth`
+- Build your plan, in order: `/business-today`, `/avatar-profile`, `/offer-architect`, `/conviction-map`, `/what-makes-you-different`, `/brand-style-guide`, `/your-story`, `/goals-and-vision`, `/sales-path`, `/marketing-plan`. Each one saves to your plan in Perfect Little Business HQ and to brain/.
 - Drop 2-3 voice samples in brain/voice-samples/
 - Run `/start` to confirm the system loads
 - Try `/digest`, `/draft-social`, or `/granola-pull` to test-drive the automations
@@ -324,7 +360,7 @@ node_modules/
 
 ## Created
 
-[TODAY'S_DATE] using perfectlittlebusiness v1.4.0
+[TODAY'S_DATE] using perfectlittlebusiness v1.5.0
 ```
 
 ---
@@ -364,7 +400,7 @@ The master document about this business. Update as your understanding evolves.
 
 ---
 
-**Note:** This file is your north star. Claude reads it every session. Keep it current. Run `/source-of-truth` to build it out properly.
+**Note:** This file is your north star. Claude reads it every session. Run `/source-of-truth` to replace it with your whole business plan from Perfect Little Business HQ, and again whenever your plan changes.
 ```
 
 ### brain/convictions.md

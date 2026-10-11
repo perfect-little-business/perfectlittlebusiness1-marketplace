@@ -1,6 +1,6 @@
 ---
 name: draft-social
-description: Draft social media posts in your voice from your recent learnings, wins, and convictions. Produces 3 versions to choose from. Calibrated to your voice samples and stated brand voice.
+description: Draft social media posts in your voice from your recent learnings, wins, and convictions. Produces 3 versions to choose from. Calibrated to your voice samples and stated brand voice. Offers the pieces planned this week on your content calendar in Perfect Little Business HQ, and marks the finished post as drafted there.
 ---
 
 # /draft-social — Voice-Calibrated Social Drafter
@@ -18,13 +18,27 @@ Remove the blank page. Draft social posts that sound like the user, grounded in 
 
 ## Execution Instructions
 
-### Step 1: Get the Topic
+### Step 1: Check the Content Calendar
+
+If the Perfect Little Business connection's tools are available, call `get_calendar` with `from` set to today and `to` set to seven days from today (YYYY-MM-DD). If it lists pieces still marked planned, open with them:
+
+"Your content calendar in HQ has these planned this week:
+- [day] · [platform] · [kind: Value, Authority, Life or Point of View]
+Want to write one of those, or something else?"
+
+If they pick one, carry its platform, date and kind through every step below: the kind shapes the angle (Value teaches something useful, Authority shows proof or what they know, Life shows the person behind the business, Point of View shares a belief that shifts someone's thinking). Then go to Step 2.
+
+If the tools aren't available, or nothing is planned, skip this step without comment.
+
+### Step 1b: Get the Topic
 
 Ask: "What do you want to post about? You can:
 - Give me a specific topic
 - Tell me to pull from a recent learning
 - Tell me to pull from a recent win
 - Say 'surprise me' and I'll suggest 3 candidate topics from your recent brain activity"
+
+(If they picked a planned piece in Step 1, ask only for its topic, and offer "surprise me" in the same way.)
 
 ### Step 2: Load Voice Context
 
@@ -35,6 +49,7 @@ Read:
 4. brain/learnings.md (recent entries — for content material)
 5. brain/wins.md (recent entries)
 6. brain/inspiration/_INDEX.md, if it exists (stories, quotes and ideas the user is holding on to; a held entry whose connection fits the topic is often the best opener, and if you draft from one, stamp it used per `/hold`)
+7. If the connection's tools are available: `get_plan` with section `brand`, then `values_and_convictions`, then `ideal_client`, for whichever are filled. Their plan in HQ is the current truth about their voice, beliefs and client, and wins over an older local file where they disagree.
 
 ### Step 3: Handle Different Topic Inputs
 
@@ -95,9 +110,20 @@ User responses possibilities:
 - "Try a different angle" → produce three new versions
 - "Version 3 is good — copy ready" → present clean copy-paste version
 
-### Step 6: Offer Capture
+### Step 6: Report It to the Calendar
 
-When user lands on a final version, ask: "Want me to save this to brain/reference/social-drafts/ for reference?"
+When the user lands on a final version, and the connection's tools are available, tell HQ it's drafted. Call `log_draft` with:
+- `title`: the post's first line, trimmed to a short title
+- `platform`: the platform of the planned piece, or the one they're posting to (if you don't know, ask once: "Which platform is this one for?")
+- `date`: the planned piece's date, or the day they mean to post it, as YYYY-MM-DD (leave it out for today)
+- `kind`: `value`, `authority`, `life` or `point_of_view`, whichever fits the post (the planned piece's kind, if they picked one)
+- `made_by`: `draft-social`
+
+Then tell them in one plain line what HQ said, for example "Marked as drafted on your content calendar in HQ." HQ tracks what's drafted, never what's published, so there's nothing to do there after they post. If the tools aren't available, skip this without comment.
+
+### Step 7: Offer Capture
+
+Ask: "Want me to save this to brain/reference/social-drafts/ for reference?"
 
 If yes, save with date and topic in filename.
 

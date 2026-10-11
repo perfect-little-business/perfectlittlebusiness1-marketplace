@@ -1,15 +1,15 @@
 {
   "name": "perfectlittlebusiness",
   "displayName": "Perfect Little Business",
-  "version": "1.4.5",
-  "description": "The Perfect Little Business plugin. Your AI Operating System (AIOS), installed in one move. It connects you to your Authority HQ portal, builds your AIOS Brain through five foundational tools (Avatar, Offer, Conviction, Brand, and Source of Truth) that run live from Authority HQ, sets up your file structure, stands up your Cowork OS dashboard, and installs the operating skills that keep the system self-improving: /start and /end for every session, /learn and /decide to capture what you discover, /hygiene to keep it healthy, and /how-to for anything else.",
+  "version": "1.5.0",
+  "description": "The Perfect Little Business plugin. Your AI Operating System (AIOS), installed in one move, and your way into Perfect Little Business HQ from Claude, Claude Code or Codex. Run your planning steps here (Your Business Today, Avatar Emotional Profile, Offer Architect, Conviction Map, What Makes You Different, Brand Style Guide, Your Story, Goals and Vision, Your Sales Path, Marketing Plan) and each one saves to your business plan in HQ and to your brain/ folder. /source-of-truth pulls your whole plan into one document, /start loads your plan and this week's content calendar, /draft-social marks drafts on that calendar, and the operating skills keep the system self-improving: /start and /end for every session, /learn and /decide to capture what you discover, /hold for ideas worth keeping, /hygiene to keep it healthy, and /how-to for anything else.",
   "author": {
     "name": "Cindy Molchany",
     "email": "hello@perfectlittlebusiness.com",
     "url": "https://perfectlittlebusiness.com"
   },
   "homepage": "https://perfectlittlebusiness.com",
-  "repository": "https://github.com/cmolchany/perfectlittlebusiness-marketplace",
+  "repository": "https://github.com/perfect-little-business/perfectlittlebusiness1-marketplace",
   "license": "Proprietary — Perfect Little Business",
   "keywords": [
     "ai-operating-layer",
