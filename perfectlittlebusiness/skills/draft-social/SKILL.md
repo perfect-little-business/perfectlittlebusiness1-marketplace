@@ -110,22 +110,25 @@ User responses possibilities:
 - "Try a different angle" → produce three new versions
 - "Version 3 is good — copy ready" → present clean copy-paste version
 
-### Step 6: Report It to the Calendar
+### Step 6: Offer to Record It
 
-When the user lands on a final version, and the connection's tools are available, tell HQ it's drafted. Call `log_draft` with:
+When the user lands on a final version, ask one question that covers both places it can go:
+
+- If the Perfect Little Business connection's tools are available: "Want me to mark this as drafted on your content calendar in HQ, and save a copy to brain/reference/social-drafts/?"
+- If they aren't: "Want me to save this to brain/reference/social-drafts/ for reference?"
+
+Do only what they say yes to.
+
+**Marking it drafted in HQ.** Call `log_draft` with:
 - `title`: the post's first line, trimmed to a short title
 - `platform`: the platform of the planned piece, or the one they're posting to (if you don't know, ask once: "Which platform is this one for?")
 - `date`: the planned piece's date, or the day they mean to post it, as YYYY-MM-DD (leave it out for today)
 - `kind`: `value`, `authority`, `life` or `point_of_view`, whichever fits the post (the planned piece's kind, if they picked one)
 - `made_by`: `draft-social`
 
-Then tell them in one plain line what HQ said, for example "Marked as drafted on your content calendar in HQ." HQ tracks what's drafted, never what's published, so there's nothing to do there after they post. If the tools aren't available, skip this without comment.
+Then tell them in one plain line what HQ said, for example "Marked as drafted on your content calendar in HQ." HQ tracks what's drafted, never what's published, so there's nothing to do there after they post.
 
-### Step 7: Offer Capture
-
-Ask: "Want me to save this to brain/reference/social-drafts/ for reference?"
-
-If yes, save with date and topic in filename.
+**Saving a copy.** Save it to brain/reference/social-drafts/ with the date and topic in the filename.
 
 ---
 

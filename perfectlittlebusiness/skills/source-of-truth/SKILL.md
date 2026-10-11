@@ -57,10 +57,10 @@ In a few plain lines:
 
 ## Fallback: the plan isn't switched on in HQ
 Run the Source of Truth step instead, the way this skill used to:
-1. Call `get_stage_prompt` with `stage_key: "source_of_truth"`.
-2. Read `brain/` (avatar-profile.md, offer-architecture.md, convictions.md, brand-style-guide.md and anything else there) and `CLAUDE.md`, and treat them as what the step calls the client brain. Never ask for what they already hold.
-3. Operate exactly as the returned system prompt instructs. Open with its opening message, word for word. One question at a time.
-4. When the final document is finished, write it to `brain/source-of-truth.md` and tell the user it's saved there. Nothing goes to HQ in this case.
+1. Call `get_stage_prompt` with `stage_key: "source_of_truth"`. What comes back already holds the user's profile and every step they've finished in HQ.
+2. Also read `brain/` and `CLAUDE.md`, and use them for anything HQ's text doesn't have yet. Never ask for what either one already holds.
+3. Operate exactly as the returned instructions say. Open with the opening message, word for word. One question at a time. When the final document is ready, show it as a clean document (the completion protocol's output markers are for the HQ app's screen: leave them out here).
+4. Ask: "Shall I save this to Perfect Little Business HQ? I'll keep a copy in `brain/source-of-truth.md` too." On a yes, call `save_step` with `stage_key: "source_of_truth"`, the complete final document and `made_by: "source-of-truth"`, then write the same document to `brain/source-of-truth.md`, and tell the user what HQ said. If they'd rather not save it to HQ, keep just the local copy. If HQ refuses or the save fails, say so plainly and keep the local copy.
 
 ## How to talk about it
 Call it "your plan in Perfect Little Business HQ" or "HQ", and "your Perfect Little Business connection". Never use technical names for the connection.

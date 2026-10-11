@@ -12,7 +12,7 @@ This is the operating system. Your AIOS Brain populates inside it.
 
 ### Your planning steps
 
-The same steps as in Perfect Little Business HQ, in the same order. Each one fetches the step fresh from HQ, works from what your plan already holds, and when you're done saves the result to your business plan in HQ and to your `brain/` folder.
+The same steps as in Perfect Little Business HQ, in the same order. Each one fetches the step fresh from HQ and works from everything you've already finished. When you're done, it asks before it saves. Then the step counts in HQ exactly as if you'd done it there: it's marked finished, its card on your business plan fills in, and a copy goes to your `brain/` folder.
 
 - `/business-today`: Your Business Today. Where your business stands right now, in plain numbers.
 - `/avatar-profile`: Avatar Emotional Profile. Who you serve.
@@ -143,7 +143,7 @@ Run your planning steps in order, here or in HQ, whichever suits you:
 
 `/business-today` → `/avatar-profile` → `/offer-architect` → `/conviction-map` → `/what-makes-you-different` → `/brand-style-guide` → `/your-story` → `/goals-and-vision` → `/sales-path` → `/marketing-plan`
 
-Each one saves to your business plan in HQ and to your `brain/` folder. `/start` tells you which one is next.
+Each one asks before it saves, then saves to your business plan in HQ and to your `brain/` folder. `/start` tells you which one is next.
 
 → [hq.perfectlittlebusiness.com](https://hq.perfectlittlebusiness.com)
 

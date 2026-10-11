@@ -161,7 +161,7 @@ Use this template. Replace [BRACKETED] with user answers. Replace [TODAY'S_DATE]
 **Project:** [PROJECT_NAME]
 **Role:** [USER_ROLE]
 **Installed:** [TODAY'S_DATE]
-**AI Operating System version:** perfectlittlebusiness v1.5.0
+**AI Operating System version:** perfectlittlebusiness v1.5.1
 
 ---
 
@@ -287,7 +287,7 @@ This file is the timeline of every session. Updated automatically by `/end`.
 ## [TODAY'S_DATE] — AI Operating System Installed
 
 **What happened:**
-Initialized the AI Operating System using perfectlittlebusiness v1.5.0. Created CLAUDE.md, MEMORY.md, .gitignore, README.md, and the full AIOS Brain (brain/ folder). Your operating skills, your planning steps, and three protective hooks are now available.
+Initialized the AI Operating System using perfectlittlebusiness v1.5.1. Created CLAUDE.md, MEMORY.md, .gitignore, README.md, and the full AIOS Brain (brain/ folder). Your operating skills, your planning steps, and three protective hooks are now available.
 
 **Git state:** Not yet committed
 **Deploy state:** Not configured (optional, for later)
@@ -360,7 +360,7 @@ node_modules/
 
 ## Created
 
-[TODAY'S_DATE] using perfectlittlebusiness v1.5.0
+[TODAY'S_DATE] using perfectlittlebusiness v1.5.1
 ```
 
 ---

@@ -1,17 +1,17 @@
 ---
 name: your-story
 description: >-
-  Run the Your Story planning step: the story behind the business in the owner's own voice (where it began, why it exists, what they bring, what they ask of clients, the impact), then a short look over the whole plan for gaps. Saves to the Your story section of the user's plan in Perfect Little Business HQ and to brain/your-story.md. Use when the user says "your story", "my story", "my origin story", "about page story", or "why my business exists".
+  Run the Your Story planning step: the story behind the business in the owner's own voice (where it began, why it exists, what they bring, what they ask of clients, the impact), then a short look over the whole plan for gaps. Saves it to the user's plan in Perfect Little Business HQ (the Your story card) and to brain/your-story.md. Use when the user says "your story", "my story", "my origin story", "about page story", or "why my business exists".
 ---
 
 # Your Story
 
-Runs the **Your Story** step from Perfect Little Business HQ, then saves the result in two places: the **Your story** section of the user's business plan in HQ, and `brain/your-story.md` in this project. The step's instructions live in HQ and are fetched fresh every time. Never copy them into this file.
+Runs the **Your Story** step from Perfect Little Business HQ, then, once the user says yes, saves it to HQ exactly as if they'd done it in the HQ app: the step is marked finished, the Your story card on their business plan fills itself, and a copy goes to `brain/your-story.md` in this project. The step's instructions live in HQ and are fetched fresh every time. Never copy them into this file.
 
 ## How it runs
 
 ### 1. Fetch the step
-Call `get_stage_prompt` from the Perfect Little Business connection with `stage_key: "your_story"`.
+Call `get_stage_prompt` from the Perfect Little Business connection with `stage_key: "your_story"`. What comes back is everything HQ wraps around this step: today's date, the user's profile, every step they've already finished, the shared rules, the step's own instructions, and how to finish and save it.
 - **The tool isn't available:** the user hasn't signed in to their Perfect Little Business connection yet. Tell them how, for where they're working, then stop:
   - Claude desktop app or claude.ai: Customize, then Connectors, then Perfect Little Business, then Connect.
   - Claude Code: type `/mcp`, choose `plugin:perfectlittlebusiness:perfectlittlebusiness`, then Authenticate.
@@ -19,34 +19,23 @@ Call `get_stage_prompt` from the Perfect Little Business connection with `stage_
   Signing in opens HQ's sign-in page in their browser. They use the email of their HQ account.
 - **It says the workspace isn't an active client yet:** relay that warmly and stop.
 
-### 2. Gather what the step already knows
-The step's instructions say to read the client brain before the first reply. Inside HQ that is loaded for it; here it isn't, so gather it before you say anything:
-- Call `get_plan` with no section to see which sections of their plan are filled.
-- For every section that is filled, call `get_plan` with its key and read the full document. This step looks over the whole plan at the end, so it needs all of it.
-- Read these files if they exist: `brain/business-today.md`, `brain/avatar-profile.md`, `brain/offer-architecture.md`, `brain/convictions.md`, `brain/what-makes-you-different.md`, `brain/brand-style-guide.md`, `brain/your-story.md`, and `CLAUDE.md`.
-- Treat all of it as the client brain (and the sign-up facts in Business at a glance as the operator profile). Never ask for anything it already holds.
-- If `get_plan` says the plan isn't switched on, carry on with the local files alone.
+### 2. Add what's only on this computer
+Read these files if they exist: `brain/business-today.md`, `brain/avatar-profile.md`, `brain/offer-architecture.md`, `brain/convictions.md`, `brain/what-makes-you-different.md`, `brain/brand-style-guide.md`, `brain/your-story.md`, and `CLAUDE.md`. HQ's text already holds everything the user has finished in HQ, so use these only for what it doesn't have yet. Never ask the user for anything either one already holds.
 
 ### 3. Run the step
-Operate exactly as the returned system prompt instructs. Open with its opening message, word for word. One question at a time. Don't add, skip, reorder or summarize away anything it specifies. Where it mentions output markers or a completion protocol, the deliverable is simply the finished final document, in the shape it gives.
+Operate exactly as the returned instructions say. Open with the opening message, word for word. One question at a time. Don't add, skip, reorder or summarize away anything they specify. When the final document is ready, show it to the user as a clean document. The completion protocol's output markers are for the HQ app's screen: leave them out here.
 
-The step ends with a short look over the plan, naming up to three gaps. That list belongs in the conversation only: leave it out of the saved document. Name each gap's step by its command here (for example `goals-and-vision`).
+The step ends with a short look over the plan, naming up to three gaps. That list comes after the final document and stays in the conversation: it isn't part of what you save. Name each gap's step by its command here (for example `goals-and-vision`).
 
-### 4. Save, once it's finished
-The step has the user confirm (or lock) its parts before it produces the final document, so a finished final document is an agreed one. If they ask for changes afterwards, make them first.
+### 4. Ask, then save
+When the final document is finished, ask one plain question before saving anything: "Shall I save this to your plan in Perfect Little Business HQ? I'll keep a copy in `brain/your-story.md` too." Wait for a yes. If they want changes, make them, show the result and ask again.
 
-1. **Local copy.** Write the final document to `brain/your-story.md` (create `brain/` if needed), replacing what was there.
-2. **HQ.** Call `save_plan_section` with `section: "your_story"`, `document`: the whole final document, `summary`: the card (rules below), and `made_by: "your-story"`. Card brief: *Where the business came from and what its founder believes, in two or three sentences.*
-3. **Tell the user**, in one or two plain lines: it's on their business plan in Perfect Little Business HQ (Your story), and in `brain/your-story.md`. Then give the step's own closing line.
+On a yes:
+1. **HQ.** Call `save_step` with `stage_key: "your_story"`, `document`: the complete final document, exactly as the user agreed to it, and `made_by: "your-story"`. 
+2. **Local copy.** Write the same document to `brain/your-story.md` (create `brain/` if needed), replacing what was there.
+3. **Tell the user** what HQ said (its reply is written for them), plus one line that a copy is in `brain/your-story.md`.
 
-If the save to HQ fails or their plan isn't switched on, say the work is safe in `brain/your-story.md` and that it can go to HQ once their plan is on. Don't retry in a loop.
-
-### Card rules
-- Use only what the document says. Never invent, never add advice, never fill a gap with a guess.
-- Write to the owner: "you" and "your". Never name the owner. Their customers are "your clients" (or the word the document uses); where the document speaks to those customers as "you", rewrite it from the owner's side.
-- Plain words. 70 words at most: one or two short sentences, or up to four short bullets, or a sentence followed by bullets.
-- No heading, no title, no preamble, no closing line.
-- No em dashes or en dashes.
+If they'd rather not save it to HQ, offer to keep just the local copy. If HQ refuses the save or it fails, tell them plainly what it said, keep the local copy, and don't retry in a loop.
 
 ## How to talk about it
 Call it "your plan in Perfect Little Business HQ" or "HQ", and "your Perfect Little Business connection". Never use technical names for the connection.

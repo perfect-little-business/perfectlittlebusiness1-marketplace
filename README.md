@@ -6,7 +6,7 @@ This marketplace hosts the AI Operating Layer™: the infrastructure that turns 
 
 ## Available Plugins
 
-### perfectlittlebusiness (v1.5.0)
+### perfectlittlebusiness (v1.5.1)
 
 Your AI Operating System (AIOS), installed in one move, and your way into Perfect Little Business HQ from Claude, Claude Code or Codex. Run your ten planning steps here or in HQ, and each one saves to your business plan in HQ and to your `brain/` folder. Twenty-seven skills in all, plus three protective hooks.
 
