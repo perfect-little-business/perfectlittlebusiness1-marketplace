@@ -21,17 +21,19 @@ Execute in this exact order:
 
 ### Step 1: Read Core Files
 
-1. Read `CLAUDE.md` from the project root.
+1. Read `CLAUDE.md` from the project root. If it says this folder belongs to one business inside a larger setup and the brain lives in the folder above, read `../CLAUDE.md` too, and read the brain from `../brain/` in the steps below instead of looking for `brain/` here.
 2. Read every `.md` file at the top level of `brain/`. Depending on which planning steps the user has run, that can include source-of-truth.md, business-today.md, avatar-profile.md, offer-architecture.md, convictions.md, what-makes-you-different.md, brand-style-guide.md, your-story.md, goals-and-vision.md, sales-path.md, marketing-plan.md, plus learnings.md, decisions.md and wins.md.
 3. Note (but don't read every file in) voice-samples/, reference/, templates/, inspiration/, dossiers/. Just note what's there.
+4. If `loop/insights.md` exists, read it and count the notes that haven't been dealt with yet.
 
 ### Step 2: Load the Plan and This Week from HQ
 
 If the Perfect Little Business connection's tools are available:
 1. Call `get_plan` with no section. It lists every section of the user's business plan in Perfect Little Business HQ, with its card and whether it's filled.
 2. Call `get_calendar` with `from` set to today and `to` set to six days from today (YYYY-MM-DD). It lists this week's planned and drafted content pieces.
+3. If `CLAUDE.md` ends with a line like "Set up with the Perfect Little Business HQ setup guide, version {date}", call `get_guide` with no arguments and find the AI Operating System setup's version. Note whether it's newer than the date in that line.
 
-Keep both in mind for the whole session: the plan is the current truth about the business, and it wins over an older local file where they disagree.
+Keep the plan and the calendar in mind for the whole session: the plan is the current truth about the business, and it wins over an older local file where they disagree.
 
 - **The tools aren't available:** skip this step and add one line to the briefing (below). Don't stop.
 - **`get_plan` says their plan in HQ isn't switched on:** skip this step and leave the HQ lines out of the briefing.
@@ -65,6 +67,8 @@ Rules for the HQ lines:
 - **This week's content:** if the calendar is empty, say "Nothing planned this week" and, when Marketing plan is empty, add "(marketing-plan fills your calendar)".
 - If the HQ tools weren't available, replace the three HQ lines with one: "**HQ:** not connected. Sign in to your Perfect Little Business connection to bring your plan into every session."
 - If a section in HQ was updated after `brain/source-of-truth.md` was last changed, add: "Your plan in HQ has changed since your Source of Truth was last pulled down. Run source-of-truth to refresh it."
+- If HQ's setup version is newer than the one in `CLAUDE.md`, add: "**Your setup:** a newer version is available. Run setup to bring your system up to date; it keeps everything you've written." If `CLAUDE.md` has no setup version line at all but there is a `brain/` folder, add instead: "**Your setup:** this folder was set up before the step-by-step setup. Run setup any time to bring it up to date; it keeps everything you've written." If there's no `CLAUDE.md` at all, the briefing is one line: "This folder isn't set up yet. Run setup to set up your AI Operating System here." and nothing else.
+- If `loop/insights.md` has notes waiting, add: "**Your inbox:** {N} notes in loop/insights.md waiting for a look." Leave the line out when there are none.
 
 ### Step 5: Wait
 

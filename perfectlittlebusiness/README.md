@@ -2,7 +2,7 @@
 
 The Perfect Little Business plugin is the infrastructure layer of your AI Operating System, installed in Claude (Cowork), Claude Code and Codex. It is also your way into Perfect Little Business HQ from your own AI: every planning step in HQ runs here too, and either way the result lands on your business plan in HQ.
 
-Install it once. You get your AIOS Brain (the `brain/` folder), ten planning steps that save to your plan in HQ, the Source of Truth, twenty-seven working skills in all, the voice-qa gate, three protective hooks, and the self-improvement loop that makes every session smarter than the last.
+Install it once. You get your AIOS Brain (the `brain/` folder), ten planning steps that save to your plan in HQ, the Source of Truth, twenty-eight working skills in all, the voice-qa gate, three protective hooks, and the self-improvement loop that makes every session smarter than the last.
 
 This is the operating system. Your AIOS Brain populates inside it.
 
@@ -33,7 +33,8 @@ Website Copy and the Directory Dossier stay in HQ. They open there after a short
 ### Operating skills
 
 **Core infrastructure:**
-- `/setup`: One-time orchestrator. Creates your project structure, AIOS Brain folder, and CLAUDE.md.
+- `/setup`: Sets up your AI Operating System in a folder, one checked step at a time, with your plan from HQ already in it. Run it again when `/start` says the setup has improved: it keeps everything you've written. The setup itself lives in HQ, so it improves without a plugin update.
+- `/hq`: Your front door to HQ. Shows where your plan stands and what's next, and runs any step or guide by name, including ones newer than this plugin.
 - `/start`: Loads your context at the beginning of every session, including your plan in HQ and this week's content calendar.
 - `/end`: Closes the session cleanly. Updates MEMORY.md, learnings.md, wins.md, and commits.
 - `/hygiene`: Weekly health check.
@@ -68,7 +69,7 @@ Website Copy and the Directory Dossier stay in HQ. They open there after a short
 
 ### Your AIOS Brain folder
 
-When you run `/setup`, the plugin creates a `brain/` folder. If you already have a plan in Perfect Little Business HQ, `/setup` brings it in. Each planning step adds or updates its own file as you run it:
+`/setup` builds a whole folder around it: `CLAUDE.md` (the briefing your AI reads every session), `README.md`, `MEMORY.md`, `ops/` (what your AI can do freely and what waits for your yes), `loop/insights.md` (an inbox for things worth keeping), `clients/` (one confidential folder per client, if you work with clients one to one), `work/`, `archive/`, and a folder for each other business you run. Your plan from HQ comes into `brain/`, alongside who's who (`people.md`) and your ownership and confidentiality lines (`boundaries.md`). Each planning step adds or updates its own file as you run it:
 
 ```
 brain/
