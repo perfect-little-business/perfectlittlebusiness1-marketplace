@@ -129,6 +129,8 @@ Do only what they say yes to.
 Then tell them in one plain line what HQ said, for example "Marked as drafted on your content calendar in HQ." HQ tracks what's drafted, never what's published, so there's nothing to do there after they post.
 
 **Saving a copy.** Save it to brain/reference/social-drafts/ with the date and topic in the filename.
+Save it exactly as you last drafted it, before they change anything by hand: `/voice-review` later
+compares it with what they actually posted, so their AI learns what they change.
 
 ---
 
